@@ -97,7 +97,7 @@ async def play(ctx, url):
     voice_client = server.voice_client
     async with ctx.typing():
         filename = await YTDLSource.from_url(url, loop=bot.loop)
-        voice_client.play(discord.FFmpegPCMAudio(executable="ffmpeg-git-20210417-amd64-static", source=filename))
+        voice_client.play(discord.FFmpegPCMAudio(executable="./ffmpeg-git-20210417-amd64-static", source=filename))
     await ctx.send('**Now playing:** {}'.format(filename))
 
 
