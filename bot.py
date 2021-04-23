@@ -1,9 +1,16 @@
 import discord
 import random
+import os
+from dotenv import load_dotenv
 
 SERVER_NAME = "Bot Playground"
 client = discord.Client()
- 
+
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
+
+
+
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord!')
@@ -52,11 +59,11 @@ async def on_message(message):
     # if 'happy birthday' in message.content.lower():
     #     await message.channel.send('Happy Birthday! 🎈🎉')
 
-@client.event
-async def on_voice_state_update(member, before, after):
-    channel = after.channel
-    if channel is not None and channel.id == '822833330877759503':
-       cloned_channel = await channel.clone(name='new_channel')
-    print(channel)
+# @client.event
+# async def on_voice_state_update(member, before, after):
+#     channel = after.channel
+#     if channel is not None and channel.id == '822833330877759503':
+#        cloned_channel = await channel.clone(name='new_channel')
+#     print(channel)
 
 client.run(TOKEN)
